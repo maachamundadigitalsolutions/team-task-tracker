@@ -1,55 +1,59 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
-        <span class="brand-text font-weight-light d-none d-sm-inline">
-    Maa Chamunda
-</span>
+{{-- Only for Admin --}}
+@role('admin')
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-user-shield"></i>
+        <p>
+            Admin Panel
+            <i class="fas fa-angle-left right"></i>
+        </p>
     </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.users') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Manage Users</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.settings') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Settings</p>
+            </a>
+        </li>
+    </ul>
+</li>
+@endrole
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
-
-                {{-- Common link --}}
-                <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>Home</p>
-                    </a>
-                </li>
-
-                {{-- Admin only --}}
-                @role('admin')
-                <li class="nav-item">
-                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user-shield"></i>
-                        <p>Admin Dashboard</p>
-                    </a>
-                </li>
-                @endrole
-
-                {{-- User only --}}
-                @role('user')
-                <li class="nav-item">
-                    <a href="{{ route('user.dashboard') }}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>User Dashboard</p>
-                    </a>
-                </li>
-                @endrole
-                {{-- Mobile Role User only --}}
-                @role('mobile')
-                <li class="nav-item">
-                    <a href="{{ route('mobile.dashboard') }}" class="nav-link">
-                        <i class="nav-icon fas fa-mobile-alt"></i>
-                        <p>Mobile User Dashboard</p>
-                    </a>
-                </li>
-                @endrole                
-
-            </ul>
-        </nav>
-    </div>
-</aside>
+{{-- Only for User --}}
+@role('user')
+<li class="nav-item has-treeview">
+    <a href="#" class="nav-link">
+        <i class="nav-icon fas fa-user"></i>
+        <p>
+            User Panel
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        <li class="nav-item">
+            <a href="{{ route('user.dashboard') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('user.profile') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>My Profile</p>
+            </a>
+        </li>
+    </ul>
+</li>
+@endrole

@@ -1,5 +1,10 @@
-import api from './api';
+import axios from 'axios';
 
-export function getAdminDashboard() {
-    return api.get('/admin/dashboard');
-}
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL, // Laravel 12 + Vite
+  headers: {
+    Accept: 'application/json',
+  },
+});
+
+export default api;
