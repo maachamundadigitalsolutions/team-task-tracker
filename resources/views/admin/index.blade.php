@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>AdminLTE Dashboard</h1>
+    <h1>AdminLTE Dashboar22</h1>
     <p>Welcome to your admin panel.</p>
 @endsection

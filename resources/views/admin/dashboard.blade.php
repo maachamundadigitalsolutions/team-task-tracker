@@ -10,3 +10,17 @@
         </p>
     </div>
 @endsection
+
+@role('admin')
+<a href="{{ route('admin.dashboard') }}" class="nav-link">
+    <i class="nav-icon fas fa-user-shield"></i>
+    <p>Admin Dashboard</p>
+</a>
+@endrole
+
+@role('user')
+<a href="{{ route('user.dashboard') }}" class="nav-link">
+    <i class="nav-icon fas fa-user"></i>
+    <p>User Dashboard</p>
+</a>
+@endrole

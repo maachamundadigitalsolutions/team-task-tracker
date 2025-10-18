@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MAA CHAMUNDA DIGITAL SOLUTIONS') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- AdminLTE -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <x-banner />
+<div class="wrapper">
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    {{-- Navbar --}}
+    @include('layouts.partials.navbar')
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    {{-- Sidebar --}}
+    @include('layouts.partials.sidebar')
+
+    {{-- Content Wrapper --}}
+    <div class="content-wrapper">
+        <section class="content pt-3">
+            <div class="container-fluid">
+                {{-- Jetstream header --}}
+                @if (isset($header))
+                    <div class="mb-4">
                         {{ $header }}
                     </div>
-                </header>
-            @endif
+                @endif
 
-            <!-- Page Content -->
-            <main>
+                {{-- Jetstream slot --}}
                 {{ $slot }}
-            </main>
-        </div>
+            </div>
+        </section>
+    </div>
 
-        @stack('modals')
+    {{-- Footer --}}
+    @include('layouts.partials.footer')
 
-        @livewireScripts
-    </body>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+@livewireScripts
+@stack('modals')
+</body>
 </html>
